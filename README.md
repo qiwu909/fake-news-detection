@@ -4,8 +4,7 @@ In this report, we will implement public dataset from GitHub to try automaticall
  RNN vs GRU vs LSTM: 
  Recurrent Neural Networks are designed to work with sequential data. RNN feeds the words one by one in the sentence into the network. This process goes until all words in the sentence are given input. However, RNN has a disadvantage about the memory. As the number of sentences becomes bigger, it suffers from vanishing gradient. Why is this happening? The gradient is used to update weights in the network. If the effect of the previous layer on the current layer is small then the gradient value will be small and vice-versa. If the gradient of the previous layer is smaller than the gradient of the current layer will be even smaller. As a result, when we proceed the process, the gradient of previous layer shrinks down. 
  
- [image text]!
- (http://github.com/qiwu909/fake-news-detection/raw/master/gru.png)
+
 Fig. 1. RNN basic architecture.
 
 In order to solve this problem, another two specialized versions of RNN were introduced. The first one is called GRU (Gated Recurrent Unit). Fig.1 was shown to explain the architecture of it. The workflow of GRU is the same as RNN but the difference is the operations inside the GRU unit. There are two gates inside GRU. Update gate is designed to decide if the cell state should be updated with the candidate state. Reset gate is used to measure whether the previous cell state is important. If reset close to 0, we can ignore previous hidden state and allow the model to drop previous irrelevant data. If gamma (update gate) close to 1, then we can remember information in that unit. In a word, gates are capable of learning which inputs in the sequence are important and capable of storing the data in the memory unit. 
